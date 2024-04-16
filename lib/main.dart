@@ -26,7 +26,10 @@ class _CalcAppState extends State<CalcApp> {
   }
 
   void clear() {
-
+    setState(() {
+      _history = ''; 
+      _expresion = ''; 
+    });
   }
 
   void evaluate(String text) { 
@@ -35,7 +38,7 @@ class _CalcAppState extends State<CalcApp> {
     ContextModel cm = ContextModel(); 
     setState(() {
       _history = _expresion; 
-      _expresion = exp.evaluate(EvaluationType.REAL, cm).toString();
+      _expresion = exp.evaluate(EvaluationType.REAL, cm).toStringAsFixed(4);
     });
   }
 
@@ -63,7 +66,7 @@ class _CalcAppState extends State<CalcApp> {
                 alignment: const Alignment(1.0, 1.0),
                 child:  Padding(
                   padding: const EdgeInsets.only(right: 12),
-                  child: Text(_history, style: const TextStyle(fontSize: 24, color: Color.fromARGB(255, 255, 255, 255)),),
+                  child: Text(_history, style: const TextStyle(fontSize: 24, color: Color.fromARGB(255, 128, 126, 126)),),
                 ),
               ), 
 
